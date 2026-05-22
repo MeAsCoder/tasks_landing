@@ -1,0 +1,454 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+:root {
+  --green: #00A651;
+  --green-dark: #007A3D;
+  --green-light: rgba(0, 166, 81, 0.12);
+  --gold: #F5A623;
+  --gold-dark: #D4891A;
+  --dark: #0D1F12;
+  --dark-2: #132B1A;
+  --white: #ffffff;
+  --white-60: rgba(255,255,255,0.6);
+  --white-40: rgba(255,255,255,0.4);
+  --white-20: rgba(255,255,255,0.2);
+  --white-8: rgba(255,255,255,0.08);
+  --white-5: rgba(255,255,255,0.05);
+}
+
+/* ============================================
+   BASE RESET
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dark);
+  color: var(--white);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.font-display {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+.text-gradient-gold {
+  background: linear-gradient(135deg, #F5A623 0%, #FFD700 50%, #F5A623 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-gradient-green {
+  background: linear-gradient(135deg, #00A651 0%, #00D46A 60%, #00A651 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.shimmer-text {
+  background: linear-gradient(90deg, #F5A623 0%, #FFD700 30%, #F5A623 60%, #FFD700 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ============================================
+   LAYOUT HELPERS
+   ============================================ */
+.container-xl {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+.section-pad {
+  padding: 80px 24px;
+}
+.text-center { text-align: center; }
+
+/* ============================================
+   BACKGROUNDS
+   ============================================ */
+.bg-dark    { background: var(--dark); }
+.bg-dark-2  { background: var(--dark-2); }
+.bg-mesh {
+  background: var(--dark);
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(0,166,81,0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(245,166,35,0.10) 0%, transparent 50%);
+}
+.grid-lines {
+  background-image:
+    linear-gradient(rgba(0,166,81,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,166,81,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.divider-top {
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.divider-green-top {
+  border-top: 1px solid rgba(0,166,81,0.2);
+}
+
+/* ============================================
+   BADGES / PILLS
+   ============================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,166,81,0.1);
+  border: 1px solid rgba(0,166,81,0.28);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--green);
+}
+.badge-gold {
+  background: rgba(245,166,35,0.1);
+  border-color: rgba(245,166,35,0.28);
+  color: var(--gold);
+}
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-dot 2s infinite;
+}
+.mpesa-badge {
+  background: linear-gradient(135deg, var(--green), var(--green-dark));
+  border: 1px solid rgba(0,255,128,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #00A651 0%, #007A3D 100%);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(0,166,81,0.4), 0 0 0 1px rgba(0,166,81,0.3);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.btn-download:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,166,81,0.55);
+}
+.btn-download-lg { padding: 16px 32px; font-size: 17px; }
+.btn-download-md { padding: 12px 22px; font-size: 15px; }
+.btn-download-sm { padding: 8px 16px; font-size: 13px; }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 28px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  color: rgba(255,255,255,0.75);
+  background: transparent;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+.glass-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(0,166,81,0.15);
+  border-radius: 20px;
+  transition: all 0.25s ease;
+}
+.glass-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(0,166,81,0.35);
+  transform: translateY(-4px);
+}
+.faq-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 20px 24px;
+}
+.testi-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  transition: all 0.3s ease;
+}
+.navbar-scrolled {
+  background: rgba(13,31,18,0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 24px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================
+   PHONE MOCKUP
+   ============================================ */
+.phone-outer {
+  background: var(--dark-2);
+  border-radius: 44px;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 10px;
+  box-shadow: 0 0 0 1px rgba(0,166,81,0.2), 0 30px 80px rgba(0,0,0,0.5);
+  width: 260px;
+  margin: 0 auto;
+  position: relative;
+}
+.phone-screen {
+  background: #0A1A0E;
+  border-radius: 36px;
+  overflow: hidden;
+  padding: 18px;
+}
+.phone-glow {
+  position: absolute;
+  inset: -30px;
+  background: rgba(0,166,81,0.12);
+  border-radius: 80px;
+  filter: blur(30px);
+  z-index: -1;
+}
+.phone-float-badge {
+  position: absolute;
+  bottom: -14px;
+  right: -16px;
+  background: var(--gold);
+  color: #0D1F12;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 14px;
+  white-space: nowrap;
+}
+
+/* ============================================
+   TICKER
+   ============================================ */
+.ticker-bar {
+  overflow: hidden;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  background: #0A1A0E;
+}
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker 80s linear infinite;
+}
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 40px;
+  font-size: 13px;
+}
+
+/* ============================================
+   GRIDS
+   ============================================ */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+@media (min-width: 700px) {
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ============================================
+   STATS ROW
+   ============================================ */
+.stats-row {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+.stat-val {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  color: #fff;
+}
+.stat-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 2px;
+}
+
+/* ============================================
+   SECTION HEADERS
+   ============================================ */
+.section-header { margin-bottom: 48px; }
+.section-h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 4vw, 38px);
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+.section-sub {
+  color: rgba(255,255,255,0.52);
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   TRUST ROW
+   ============================================ */
+.trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  color: rgba(255,255,255,0.38);
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+.footer-links a {
+  color: rgba(255,255,255,0.38);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: #fff; }
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes notifPop {
+  0% { opacity: 0; transform: scale(0.88) translateY(8px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.notif-pop { animation: notifPop 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.8s both; }
+
+/* ============================================
+   RESPONSIVE HELPERS
+   ============================================ */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.gap-6 { gap: 24px; }
+.mb-2 { margin-bottom: 8px; }
+.mb-3 { margin-bottom: 12px; }
+.mb-4 { margin-bottom: 16px; }
+.mb-5 { margin-bottom: 20px; }
+.mb-6 { margin-bottom: 24px; }
+.mb-8 { margin-bottom: 32px; }
+.mb-10 { margin-bottom: 40px; }
+.mb-12 { margin-bottom: 48px; }
+.mt-3 { margin-top: 12px; }
+.mt-4 { margin-top: 16px; }
+.relative { position: relative; }
+.overflow-hidden { overflow: hidden; }
+.w-full { width: 100%; }
